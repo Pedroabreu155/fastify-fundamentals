@@ -3,3 +3,9 @@ node_modules
 
 # Dist Folder
 dist
+
+#database
+/db/database.db
+
+#envs
+.env
