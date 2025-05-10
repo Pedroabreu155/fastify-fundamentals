@@ -1,9 +1,9 @@
-import js from '@eslint/js';
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
-import { defineConfig } from 'eslint/config';
+import js from '@eslint/js'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
+import { defineConfig } from 'eslint/config'
 // Importe
-import eslintConfigPrettier from 'eslint-config-prettier';
+import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default defineConfig([
   { ignores: ['dist/*'] },
@@ -20,9 +20,7 @@ export default defineConfig([
   {
     rules: {
       'prefer-const': 'warn',
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'warn',
     },
   },
   eslintConfigPrettier,
-]);
+])

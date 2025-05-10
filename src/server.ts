@@ -1,22 +1,10 @@
-import crypto from 'node:crypto'
-
 import fastify from 'fastify'
-import { knex } from './database'
 import { env } from './env'
+import { transactionsController } from './controllers/TransactionsController'
 
 const app = fastify()
 
-app.get('/', async () => {
-  const transaction = await knex('transactions')
-    .insert({
-      public_id: crypto.randomUUID(),
-      title: 'Transaction test',
-      amount: 10,
-    })
-    .returning('*')
-
-  return transaction
-})
+app.register(transactionsController, { prefix: 'transactions' })
 
 app
   .listen({ port: Number(env.PORT) })
