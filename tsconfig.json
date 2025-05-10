@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "ES2023"
+    ],
+    "module": "node16",
+    "target": "ES2023",
+    "strict": true,
+    "rootDirs": [
+      "./src"
+    ],
+    "outDir": "./dist",
+  }
+}
