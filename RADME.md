@@ -1,12 +1,14 @@
-# REQUISITOS FUNCIONAIS
+# API para aprofundar conhecimentos na stack do node usando fastify e conceitos de clean arch e solid
 
-- [] O usuário deve poder criar uma nova transação
-- [] O usuário deve poder obter um resumo entre transações(saldo)
-- [] O usuário deve poder listar todas as suas transações
-- [] O usuário deve poder listar uma única transação
+## REQUISITOS FUNCIONAIS
 
-# REGRAS DE NEGOCIO
+- [x] O usuário deve poder criar uma nova transação
+- [x] O usuário deve poder obter um resumo entre transações(saldo)
+- [x] O usuário deve poder listar todas as suas transações
+- [x] O usuário deve poder listar uma única transação
 
-- [] A transação pode ter tipo crédito que adiciona saldo ou tipo débito que subtrai saldo
+## REGRAS DE NEGOCIO
+
+- [x] A transação pode ter tipo crédito que adiciona saldo ou tipo débito que subtrai saldo
 - [] Deve ser possível interceptar o usuário entre as requisições
 - [] O usuário só pode visualizar as suas próprias transações
