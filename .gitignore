@@ -9,3 +9,4 @@ dist
 
 #envs
 .env
+.env.test
