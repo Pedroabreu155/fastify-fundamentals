@@ -1,10 +1,10 @@
 import fastify from 'fastify'
 import { env } from './env'
-import { transactionsController } from './controllers/TransactionsController'
+import { transactionsControllerRoutes } from './controllers/transactions/routes'
 
 const app = fastify()
 
-app.register(transactionsController, { prefix: 'transactions' })
+app.register(transactionsControllerRoutes, { prefix: 'transactions' })
 
 app
   .listen({ port: Number(env.PORT) })
