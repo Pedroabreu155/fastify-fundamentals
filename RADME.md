@@ -1,5 +1,9 @@
 # API para aprofundar conhecimentos na stack do node usando fastify e conceitos de clean arch e solid
 
+## em desenvolvimento...
+
+techs usadas: Fastify, Zod, Vitest e Knex
+
 ## REQUISITOS FUNCIONAIS
 
 - [x] O usuário deve poder criar uma nova transação
@@ -10,5 +14,5 @@
 ## REGRAS DE NEGOCIO
 
 - [x] A transação pode ter tipo crédito que adiciona saldo ou tipo débito que subtrai saldo
-- [] Deve ser possível interceptar o usuário entre as requisições
-- [] O usuário só pode visualizar as suas próprias transações
+- [x] Deve ser possível interceptar o usuário entre as requisições
+- [x] O usuário só pode visualizar as suas próprias transações
