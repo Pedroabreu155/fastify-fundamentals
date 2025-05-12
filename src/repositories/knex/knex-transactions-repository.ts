@@ -24,11 +24,22 @@ export class KnexTransactionsRepository implements TransactionsRepository {
 
     return transactions
   }
-  findById(
-    params: IFetchTransactionUseCaseDTO,
-  ): Promise<IFetchTransactionUseCaseResponse> {
-    throw new Error('Method not implemented.')
+
+  async findById({
+    id,
+    sessionId,
+  }: IFetchTransactionUseCaseDTO): Promise<IFetchTransactionUseCaseResponse> {
+    const transaction = await knex('transactions')
+      .select('public_id', 'title', 'amount', 'created_at')
+      .where({
+        public_id: id,
+        session_id: sessionId,
+      })
+      .first()
+
+    return transaction
   }
+
   async create({
     amount,
     sessionId,
@@ -42,9 +53,15 @@ export class KnexTransactionsRepository implements TransactionsRepository {
       session_id: sessionId,
     })
   }
-  getSummary(
-    params: IGetSummaryUseCaseDTO,
-  ): Promise<IGetSummaryUseCaseResponse> {
-    throw new Error('Method not implemented.')
+
+  async getSummary({
+    sessionId,
+  }: IGetSummaryUseCaseDTO): Promise<IGetSummaryUseCaseResponse> {
+    const summary = await knex('transactions')
+      .where('session_id', sessionId)
+      .sum('amount', { as: 'amount' })
+      .first()
+
+    return summary
   }
 }
