@@ -1,9 +1,9 @@
 /* eslint-disable-next-line */
 import { Knex } from 'knex'
-import { Transactions } from '../interfaces/models/transactions'
+import { ITransaction } from '../interfaces/models/ITransaction'
 
 declare module 'knex/types/tables' {
   export interface Tables {
-    transactions: Transactions
+    transactions: ITransaction
   }
 }

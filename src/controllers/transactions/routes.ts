@@ -1,14 +1,14 @@
 import { FastifyInstance } from 'fastify'
-import { getAll } from './getAllTransactions'
-import { fetchTransaction } from './fetchTransaction'
-import { createTransaction } from './createTransaction'
-import { getSummary } from './getSummary'
+import { getAll } from './get-all-transactions'
+import { fetchTransaction } from './fetch-transaction'
+import { createTransaction } from './create-transaction'
+import { getSummary } from './get-summary'
 import { checkSessionId } from '../../middlewares/check-session-id'
 
 export async function transactionsControllerRoutes(app: FastifyInstance) {
-  app.get('/', { preHandler: checkSessionId }, getAll)
-  app.get('/:id', { preHandler: checkSessionId }, fetchTransaction)
-  app.get('/summary', { preHandler: checkSessionId }, getSummary)
+  app.get('/', { onRequest: checkSessionId }, getAll)
+  app.get('/:id', { onRequest: checkSessionId }, fetchTransaction)
+  app.get('/summary', { onRequest: checkSessionId }, getSummary)
 
   app.post('/', createTransaction)
 }

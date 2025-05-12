@@ -1,4 +1,4 @@
-export interface Transactions {
+export interface ITransaction {
   id: number
   public_id: string
   title: string

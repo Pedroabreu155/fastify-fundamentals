@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto'
 
 import { FastifyReply, FastifyRequest } from 'fastify'
 import z from 'zod'
-import { knex } from '../../database'
+import { CreateTransactionUseCase } from '../../use-cases/transactions/create-transaction-use-case'
 
 export const createTransaction = async (
   request: FastifyRequest,
@@ -29,14 +29,9 @@ export const createTransaction = async (
     request.body,
   )
 
-  await knex('transactions')
-    .insert({
-      public_id: randomUUID(),
-      title,
-      amount: type === 'credit' ? amount : amount * -1,
-      session_id: sessionId,
-    })
-    .returning('*')
+  const createTransactionUseCase = new CreateTransactionUseCase()
+
+  await createTransactionUseCase.execute({ title, amount, type, sessionId })
 
   return reply.status(201).send()
 }

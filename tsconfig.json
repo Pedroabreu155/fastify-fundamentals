@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "lib": [
-      "ES2023"
-    ],
+    "lib": ["ES2023"],
     "module": "node16",
     "target": "ES2023",
     "strict": true,
-    "rootDirs": [
-      "./src"
-    ],
+    "rootDirs": ["./src"],
     "outDir": "./dist",
+    "baseUrl": "./" /* Specify the base directory to resolve non-relative module names. */,
+    "paths": {
+      "@/*": ["./src/*"]
+    } /* Specify a set of entries that re-map imports to additional lookup locations. */
   }
 }
