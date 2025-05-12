@@ -1,16 +1,10 @@
 import { knex } from '@/database'
-import { IUseCase } from '@/interfaces/IUseCase'
-import { ITransaction } from '@/interfaces/models/ITransaction'
+import { IUseCase } from '@/interfaces/use-cases/IUseCase'
 import { ResourceNotFoundError } from '../errors/resource-not-found'
-
-interface IFetchTransactionUseCaseDTO {
-  id: string
-  sessionId: string
-}
-
-type IFetchTransactionUseCaseResponse =
-  | Pick<ITransaction, 'public_id' | 'title' | 'amount' | 'created_at'>
-  | undefined
+import {
+  IFetchTransactionUseCaseDTO,
+  IFetchTransactionUseCaseResponse,
+} from '@/interfaces/dtos'
 
 export class FetchTransactionUseCase
   implements

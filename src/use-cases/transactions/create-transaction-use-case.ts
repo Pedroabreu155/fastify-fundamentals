@@ -1,13 +1,7 @@
 import { randomUUID } from 'node:crypto'
-import { IUseCase } from '../../interfaces/IUseCase'
+import { IUseCase } from '../../interfaces/use-cases/IUseCase'
 import { knex } from '../../database'
-
-interface ICreateTransactionUseCaseDTO {
-  title: string
-  amount: number
-  type: 'credit' | 'debit'
-  sessionId: string
-}
+import { ICreateTransactionUseCaseDTO } from '@/interfaces/dtos'
 
 export class CreateTransactionUseCase
   implements IUseCase<ICreateTransactionUseCaseDTO, void>

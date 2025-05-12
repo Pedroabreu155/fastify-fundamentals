@@ -1,12 +1,12 @@
 import { FastifyRequest } from 'fastify'
-import { GetAllTransactionsUseCase } from '@/use-cases/transactions/get-all-transactions-use-case'
+import { makeGetAllTransactionsUseCase } from '@/use-cases/factories/make-get-all-transactions-use-case'
 
 export const getAll = async (request: FastifyRequest) => {
   const sessionId = request.cookies.sessionId as string
 
-  const getAllTransactionsUseCase = new GetAllTransactionsUseCase()
+  const getAllUseCase = makeGetAllTransactionsUseCase()
 
-  const transactions = await getAllTransactionsUseCase.execute({ sessionId })
+  const transactions = await getAllUseCase.execute({ sessionId })
 
-  return transactions
+  return { transactions }
 }

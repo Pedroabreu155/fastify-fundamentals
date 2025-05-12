@@ -1,11 +1,9 @@
 import { knex } from '@/database'
-import { IUseCase } from '@/interfaces/IUseCase'
-
-interface IGetSummaryUseCaseDTO {
-  sessionId: string
-}
-
-type IGetSummaryUseCaseResponse = { amount: number } | undefined
+import {
+  IGetSummaryUseCaseDTO,
+  IGetSummaryUseCaseResponse,
+} from '@/interfaces/dtos'
+import { IUseCase } from '@/interfaces/use-cases/IUseCase'
 
 export class GetSummaryUseCase
   implements IUseCase<IGetSummaryUseCaseDTO, IGetSummaryUseCaseResponse>
