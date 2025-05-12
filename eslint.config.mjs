@@ -2,11 +2,10 @@ import js from '@eslint/js'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 import { defineConfig } from 'eslint/config'
-// Importe
 import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default defineConfig([
-  { ignores: ['dist/*'] },
+  { ignores: ['dist/*', 'node_modules/*'] },
   {
     files: ['**/*.{js,mjs,cjs,ts}'],
     plugins: { js },

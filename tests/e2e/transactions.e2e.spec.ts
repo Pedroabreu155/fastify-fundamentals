@@ -67,7 +67,7 @@ describe('Transactions routes', () => {
       .get('/transactions')
       .set('Cookie', cookies)
 
-    const id = listResponse.body.transactions[0].public_id
+    const { public_id: id } = listResponse.body.transactions[0]
 
     const fetchResponse = await request(app.server)
       .get(`/transactions/${id}`)

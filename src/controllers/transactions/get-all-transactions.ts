@@ -8,7 +8,5 @@ export const getAll = async (request: FastifyRequest) => {
 
   const transactions = await getAllTransactionsUseCase.execute({ sessionId })
 
-  console.log(transactions)
-
-  return { transactions }
+  return transactions
 }
