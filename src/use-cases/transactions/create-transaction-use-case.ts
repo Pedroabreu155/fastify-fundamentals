@@ -1,22 +1,23 @@
-import { randomUUID } from 'node:crypto'
 import { IUseCase } from '../../interfaces/use-cases/IUseCase'
-import { knex } from '../../database'
 import { ICreateTransactionUseCaseDTO } from '@/interfaces/dtos'
+import { TransactionsRepository } from '@/repositories/transactions-repository'
 
 export class CreateTransactionUseCase
   implements IUseCase<ICreateTransactionUseCaseDTO, void>
 {
+  constructor(private transactionsRepository: TransactionsRepository) {}
+
   async execute({
     amount,
     title,
     type,
     sessionId,
   }: ICreateTransactionUseCaseDTO) {
-    await knex('transactions').insert({
-      public_id: randomUUID(),
+    await this.transactionsRepository.create({
+      amount,
+      sessionId,
       title,
-      amount: type === 'credit' ? amount : amount * -1,
-      session_id: sessionId,
+      type,
     })
   }
 }

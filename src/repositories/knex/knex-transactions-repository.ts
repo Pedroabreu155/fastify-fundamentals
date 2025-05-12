@@ -1,3 +1,5 @@
+import { randomUUID } from 'node:crypto'
+
 import {
   IGetAllTransactionsUseCaseDTO,
   IGetAllTransactionsUseCaseResponse,
@@ -27,8 +29,18 @@ export class KnexTransactionsRepository implements TransactionsRepository {
   ): Promise<IFetchTransactionUseCaseResponse> {
     throw new Error('Method not implemented.')
   }
-  create(params: ICreateTransactionUseCaseDTO): Promise<void> {
-    throw new Error('Method not implemented.')
+  async create({
+    amount,
+    sessionId,
+    title,
+    type,
+  }: ICreateTransactionUseCaseDTO): Promise<void> {
+    await knex('transactions').insert({
+      public_id: randomUUID(),
+      title,
+      amount: type === 'credit' ? amount : amount * -1,
+      session_id: sessionId,
+    })
   }
   getSummary(
     params: IGetSummaryUseCaseDTO,

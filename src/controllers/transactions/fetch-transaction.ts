@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import z from 'zod'
-import { FetchTransactionUseCase } from '@/use-cases/transactions/fetch-transaction-use-case'
 import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found'
+import { makeFetchTransactionUseCase } from '@/use-cases/factories/make-fetch-transaction-use-case'
 
 export const fetchTransaction = async (
   request: FastifyRequest,
@@ -14,7 +14,7 @@ export const fetchTransaction = async (
   const sessionId = request.cookies.sessionId as string
 
   try {
-    const fetchTransactionUseCase = new FetchTransactionUseCase()
+    const fetchTransactionUseCase = makeFetchTransactionUseCase()
 
     const transaction = await fetchTransactionUseCase.execute({ id, sessionId })
 

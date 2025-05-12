@@ -1,20 +1,19 @@
-import { knex } from '@/database'
 import {
   IGetSummaryUseCaseDTO,
   IGetSummaryUseCaseResponse,
 } from '@/interfaces/dtos'
 import { IUseCase } from '@/interfaces/use-cases/IUseCase'
+import { TransactionsRepository } from '@/repositories/transactions-repository'
 
 export class GetSummaryUseCase
   implements IUseCase<IGetSummaryUseCaseDTO, IGetSummaryUseCaseResponse>
 {
-  async execute({ sessionId }: IGetSummaryUseCaseDTO) {
-    const summary = await knex('transactions')
-      .where('session_id', sessionId)
-      .sum('amount', { as: 'amount' })
-      .first()
+  constructor(private transactionsRepository: TransactionsRepository) {}
 
-    console.log(summary)
+  async execute({ sessionId }: IGetSummaryUseCaseDTO) {
+    const summary = await this.transactionsRepository.getSummary({
+      sessionId,
+    })
 
     return summary
   }

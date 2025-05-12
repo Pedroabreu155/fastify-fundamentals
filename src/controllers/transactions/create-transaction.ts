@@ -1,8 +1,8 @@
 import { randomUUID } from 'node:crypto'
-
-import { FastifyReply, FastifyRequest } from 'fastify'
 import z from 'zod'
-import { CreateTransactionUseCase } from '../../use-cases/transactions/create-transaction-use-case'
+import { FastifyReply, FastifyRequest } from 'fastify'
+
+import { makeCreateTransactionUseCase } from '@/use-cases/factories/make-create-transaction-use-case'
 
 export const createTransaction = async (
   request: FastifyRequest,
@@ -29,7 +29,7 @@ export const createTransaction = async (
     request.body,
   )
 
-  const createTransactionUseCase = new CreateTransactionUseCase()
+  const createTransactionUseCase = makeCreateTransactionUseCase()
 
   await createTransactionUseCase.execute({ title, amount, type, sessionId })
 
