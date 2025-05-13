@@ -4,6 +4,8 @@
 
 techs usadas: Fastify, Zod, Vitest e Knex
 
+## TO-DO:
+
 ## REQUISITOS FUNCIONAIS
 
 - [x] O usuário deve poder criar uma nova transação
