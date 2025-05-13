@@ -6,6 +6,14 @@ techs usadas: Fastify, Zod, Vitest e Knex
 
 ## TO-DO:
 
+- [ ] Módulo de usuários com autenticação
+- [ ] Devidos relacionamentos
+- [ ] Testes unitários
+- [ ] Refresh token
+- [ ] Docs com swagger
+- [ ] in memory repositories
+- [ ] observabilidade com opentelemetry
+
 ## REQUISITOS FUNCIONAIS
 
 - [x] O usuário deve poder criar uma nova transação
